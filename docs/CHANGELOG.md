@@ -1,3 +1,10 @@
+# 1.0.0 (2020-09-07)
+
+
+### Features
+
+* initial commit ([93eaaa1](https://github.com/askuzminov/actions-test/commit/93eaaa135ae6429b1099180bcb7efdcd6aa1345f))
+
 # [1.3.0](https://github.com/askuzminov/actions-test/compare/v1.2.1...v1.3.0) (2020-09-07)
 
 
