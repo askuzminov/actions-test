@@ -5,9 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cp -r src dist",
-    "semantic-release": "semantic-release",
-    "postpublish": "cp -r dist/package.json src && cp -r dist/npm-shrinkwrap.json src"
+    "build": "cp -r app/src app/dist && cp app/package.json app/dist",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -59,14 +58,14 @@
       [
         "@semantic-release/npm",
         {
-          "pkgRoot": "dist"
+          "pkgRoot": "app/dist"
         }
       ],
       [
         "@semantic-release/git",
         {
           "assets": [
-            "src/**/*.{js,css}",
+            "src/**/*.*",
             "docs",
             "package.json"
           ],
