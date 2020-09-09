@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/askuzminov/actions-test/compare/v1.0.2...v1.0.3) (2020-09-09)
+
+
+### Bug Fixes
+
+* app ([dbb2321](https://github.com/askuzminov/actions-test/commit/dbb23219ac7039ca56b4fdaf640672dcfe34ccc6))
+
 ## [1.0.2](https://github.com/askuzminov/actions-test/compare/v1.0.1...v1.0.2) (2020-09-09)
 
 
