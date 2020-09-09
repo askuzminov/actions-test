@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/askuzminov/actions-test/compare/v1.0.0...v1.0.1) (2020-09-09)
+
+
+### Bug Fixes
+
+* test dist ([ea6bd6b](https://github.com/askuzminov/actions-test/commit/ea6bd6b7751a5dd57e101134acdcb8d42dc0983f))
+
 # 1.0.0 (2020-09-07)
 
 
