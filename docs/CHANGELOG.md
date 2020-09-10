@@ -1,3 +1,11 @@
+## [1.0.4](https://github.com/askuzminov/actions-test/compare/v1.0.3...v1.0.4) (2020-09-10)
+
+
+### Bug Fixes
+
+* up ([5838dfa](https://github.com/askuzminov/actions-test/commit/5838dfac167100b496f63f243d8a7f246ed5bc7b))
+* up ([1967f7f](https://github.com/askuzminov/actions-test/commit/1967f7f746e6caa98ba154a6bad6e6787387c99c))
+
 ## [1.0.3](https://github.com/askuzminov/actions-test/compare/v1.0.2...v1.0.3) (2020-09-09)
 
 
