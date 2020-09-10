@@ -2,12 +2,14 @@
   "name": "@askuzminov/actions-test",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cp -r app/src app/dist && cp app/package.json app/dist",
+    "build": "cp -r src dist",
     "semantic-release": "semantic-release"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/askuzminov/actions-test.git"
@@ -15,7 +17,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "author": "",
+  "author": "ASK",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/askuzminov/actions-test/issues"
@@ -41,49 +43,5 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "release": {
-    "branches": [
-      "master"
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      [
-        "@semantic-release/changelog",
-        {
-          "changelogFile": "docs/CHANGELOG.md"
-        }
-      ],
-      [
-        "@semantic-release/npm",
-        {
-          "pkgRoot": "app/dist"
-        }
-      ],
-      [
-        "@semantic-release/git",
-        {
-          "assets": [
-            "src/**/*.*",
-            "docs",
-            "package.json"
-          ],
-          "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-        }
-      ],
-      [
-        "@semantic-release/github",
-        {
-          "assets": [
-            {
-              "path": "src",
-              "label": "Source"
-            }
-          ]
-        }
-      ]
-    ]
-  },
-  "dependencies": {}
+  }
 }
