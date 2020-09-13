@@ -11,8 +11,7 @@
       "conventionalCommits": true,
       "yes": true,
       "message": "chore(release): publish %s [skip ci]",
-      "registry": "https://npm.pkg.github.com",
-      "contents": "dist"
+      "registry": "https://npm.pkg.github.com"
     }
   }
 }

@@ -25,14 +25,16 @@
     "url": "https://github.com/askuzminov/actions-test/issues"
   },
   "homepage": "https://github.com/askuzminov/actions-test#readme",
-  "main": "./cjs/index.js",
-  "module": "./esm/index.js",
-  "types": "./types/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build:cjs": "tsc",
     "build:esm": "tsc --module es2015 --outDir ./dist/esm/",
     "build:types": "tsc --outDir ./dist/types/ --declaration --emitDeclarationOnly",
-    "build:package": "mkdir -p dist && cp package.json dist && cp *.md dist",
-    "build": "npm run build:package && npm run build:cjs && npm run build:esm && npm run build:types"
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types"
   }
 }
