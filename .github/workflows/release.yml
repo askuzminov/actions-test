@@ -45,7 +45,7 @@ jobs:
             echo "Release production"
             npm run release
             npm run github
-            git push origin --tags
+            git push origin
           else
             echo "Release canary"
             npm run release -- --prerelease $BRANCH_NAME.$BUILD_ID
