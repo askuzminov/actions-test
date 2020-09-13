@@ -1,3 +1,7 @@
-# actions-test
+# Install
 
 New text
+
+## About
+
+[App](package/readme.md)
