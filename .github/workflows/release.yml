@@ -35,7 +35,7 @@ jobs:
       - name: Release GITHUB
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if [[ $BRANCH_NAME == 'master' ]]; then
             echo "Run publish production"
