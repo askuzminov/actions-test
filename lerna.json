@@ -7,7 +7,7 @@
     },
     "publish": {
       "allowBranch": ["master"],
-      "ignoreChanges": ["**/*.spec.ts", "**/*.spec.tsx", "**/tests/**", "**/*.md"],
+      "ignoreChanges": ["**/*.spec.ts", "**/*.spec.tsx", "**/tests/**"],
       "conventionalCommits": true,
       "yes": true,
       "message": "chore(release): publish %s [skip ci]",
