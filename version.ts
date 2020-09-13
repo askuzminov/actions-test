@@ -2,30 +2,12 @@ import { execSync } from 'child_process';
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 
-const tag = execSync(`git describe --tags --abbrev=0 --first-parent`, { encoding: 'utf8' });
-const commitsRaw = execSync(
-  `git log ${tag.trim()}..HEAD --pretty=format:'{ "short": "%h", "hash": "%H", "title": "%s", "body": "%b", "author": "%d" }'`,
-  {
-    encoding: 'utf8',
-  }
-);
-
 interface RawLog {
   short: string;
   hash: string;
   title: string;
   body: string;
 }
-
-const commits = commitsRaw
-  .split('\n')
-  .map((s) => s.trim())
-  .filter(Boolean)
-  .map((s) => JSON.parse(s)) as RawLog[];
-
-console.log(commits);
-
-const rParse = /^(\w*)(?:\(([\w$.\-*/ ]*)\))?: (.*)$/;
 
 interface Message {
   type: string;
@@ -34,6 +16,45 @@ interface Message {
   body: string;
   hash: string;
   shortHash: string;
+}
+
+const ARG = arg();
+const TITLE = `# Changelog\n\nAll notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.\n`;
+const rParse = /^(\w*)(?:\(([\w$.\-*/ ]*)\))?: (.*)$/;
+
+const pack = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf8')) as Record<
+  string,
+  string | undefined | Record<string, string | undefined>
+>;
+
+const URL = getURL();
+
+const tag = ex(`git describe --tags --abbrev=0 --first-parent`);
+const commitsRaw = ex(
+  `git log ${tag.trim()}..HEAD --pretty=format:'{ "short": "%h", "hash": "%H", "title": "%s", "body": "%b", "author": "%d" }'`
+);
+
+const commits = commitsRaw
+  .split('\n')
+  .map((s) => s.trim())
+  .filter(Boolean)
+  .map((s) => JSON.parse(s)) as RawLog[];
+
+function ex(cmd: string) {
+  return execSync(cmd, { encoding: 'utf8' });
+}
+
+function arg<T extends Record<string, string | boolean>>(): T {
+  const ar = process.argv.slice(2);
+  const argv: Record<string, string | boolean> = {};
+
+  for (const item of ar) {
+    const c = item.split('=');
+
+    argv[c[0]] = c[1] || true;
+  }
+
+  return argv as T;
 }
 
 function parseItem(log: RawLog): Message {
@@ -49,7 +70,7 @@ function parseItem(log: RawLog): Message {
         body: log.body,
       }
     : {
-        type: 'unknown',
+        type: 'other',
         content: log.title,
         shortHash: log.short,
         hash: log.hash,
@@ -97,25 +118,24 @@ function parse(commits: RawLog[]) {
   };
 }
 
-function nextVersion(config: ReturnType<typeof parse>) {
-  return execSync(`npm version ${config.isMajor ? 'major' : config.isMinor ? 'minor' : 'patch'} --no-git-tag-version`, {
-    encoding: 'utf8',
-  }).trim();
+function nextVersion(config: ReturnType<typeof parse>, preid?: string | boolean) {
+  return ex(
+    `npm version ${
+      preid
+        ? `prerelease${typeof preid === 'string' ? ` --preid=${preid}` : ''}`
+        : config.isMajor
+        ? 'major'
+        : config.isMinor
+        ? 'minor'
+        : 'patch'
+    } --no-git-tag-version`
+  ).trim();
 }
-
-const pack = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf8')) as Record<
-  string,
-  string | undefined | Record<string, string | undefined>
->;
 
 function getURL(): string {
   const parsed = /([^/.]+)[/.]+([^/.]+)[/.]+[^/.]+$/.exec((typeof pack.repository === 'object' && pack.repository?.url) || '');
   return parsed ? `https://github.com/${parsed[1]}/${parsed[2]}` : '';
 }
-
-const URL = getURL();
-
-const TITLE = `# Changelog\n\nAll notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.\n`;
 
 let changelog = '';
 try {
@@ -131,9 +151,7 @@ function getDate() {
   return date.getUTCFullYear() + '-' + (date.getUTCMonth() + 1) + '-' + date.getUTCDate();
 }
 
-function makeMD(config: ReturnType<typeof parse>) {
-  const version = nextVersion(config);
-
+function makeMD(config: ReturnType<typeof parse>, version: string) {
   let md = `\n## ${URL ? `[${version}](${URL}/compare/${tag.trim()}...${version})` : version} (${getDate()})\n`;
 
   for (const group in config.groups) {
@@ -144,21 +162,29 @@ function makeMD(config: ReturnType<typeof parse>) {
     }
   }
 
-  return { md, version };
+  return md;
 }
 
-const config = parse(commits);
+function run() {
+  const config = parse(commits);
 
-console.log(config);
+  console.log(config);
 
-if (config.isEmpty) {
-  console.log('No change found in GIT');
-} else {
-  const { md, version } = makeMD(config);
+  if (config.isEmpty) {
+    console.log('No change found in GIT');
+  } else {
+    const version = nextVersion(config, ARG.prerelease);
+    const md = makeMD(config, version);
 
-  writeFileSync(join(process.cwd(), 'CHANGELOG.md'), `${TITLE}${md}${changelog}`, 'utf8');
+    console.log(md);
+    console.log(version);
 
-  execSync('git add .');
-  execSync(`git commit -m "chore(release): ${version} [skip ci]"`);
-  execSync(`git tag -a ${version}  -m 'Release ${version}'`);
+    // writeFileSync(join(process.cwd(), 'CHANGELOG.md'), `${TITLE}${md}${changelog}`, 'utf8');
+
+    // execSync('git add .');
+    // execSync(`git commit -m "chore(release): ${version} [skip ci]"`);
+    // execSync(`git tag -a ${version}  -m 'Release ${version}'`);
+  }
 }
+
+run();
