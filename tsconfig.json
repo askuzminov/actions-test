@@ -16,6 +16,8 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "preserveSymlinks": false,
-    "sourceMap": true
-  }
+    "sourceMap": true,
+    "outDir": "./dist/cjs/"
+  },
+  "include": ["src", "tests"]
 }
