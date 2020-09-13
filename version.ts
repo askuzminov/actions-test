@@ -57,8 +57,6 @@ const commitsRaw = ex(`git log ${tag.trim()}..HEAD --pretty=format:'{ "short": "
   '\\n'
 );
 
-console.log(commitsRaw);
-
 const commits = commitsRaw
   .split('\n')
   .map((s) => s.trim())
@@ -107,10 +105,11 @@ function parse(commits: RawLog[]) {
 
   for (const commit of commits) {
     const item = parseItem(commit);
-    console.log(item);
+
     if (item.type === 'break' || item.body.indexOf('BREAKING CHANGE:') > -1) {
       isMajor = true;
     }
+
     if (item.type === 'feat') {
       isMinor = true;
     }
@@ -186,16 +185,14 @@ function makeMD(config: ReturnType<typeof parse>, version: string) {
 async function run() {
   const config = parse(commits);
 
-  console.log(config);
-
   if (config.isEmpty) {
     console.log('No change found in GIT');
   } else {
     const version = nextVersion(config, ARG.prerelease);
     const md = makeMD(config, version);
 
-    console.log(md);
     console.log(version);
+    console.log(md);
 
     if (!ARG.prerelease) {
       writeFileSync(join(process.cwd(), 'CHANGELOG.md'), `${TITLE}${md}${changelog}`, 'utf8');
