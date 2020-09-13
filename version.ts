@@ -51,7 +51,7 @@ if (changelog.startsWith(TITLE)) {
 const URL = getURL();
 const ex = (cmd: string) => execSync(cmd, { encoding: 'utf8' });
 
-const tag = ex(`git describe --tags --abbrev=0 --first-parent`);
+const tag = ex(`git describe --always --tags --abbrev=0 --first-parent`);
 const commitsRaw = ex(`git log ${tag.trim()}..HEAD --pretty=format:'{ "short": "%h", "hash": "%H", "title": "%s", "body": "%b" }'`).replace(
   /\n/g,
   '\\n'
