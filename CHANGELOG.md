@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.13.2-132.3](https://github.com/askuzminov/actions-test/compare/v1.13.2-132.2...v1.13.2-132.3) (2020-9-13)
+
+### fix
+
+- ver ([10d1b28](https://github.com/askuzminov/actions-test/commit/10d1b28376121ac36b211374306f78b55df6b4e0))
+
 ## [v1.13.2-132.2](https://github.com/askuzminov/actions-test/compare/v1.13.1...v1.13.2-132.2) (2020-9-13)
 
 ### feat
