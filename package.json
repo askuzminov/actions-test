@@ -34,7 +34,7 @@
     "build:types": "tsc --outDir ./dist/types/ --declaration --emitDeclarationOnly",
     "build": "npm run build:cjs && npm run build:esm && npm run build:types",
     "release": "standard-version",
-    "github": "conventional-github-releaser -p angular",
+    "github": "conventional-github-releaser -p angular -r 0",
     "semantic-release": "semantic-release"
   },
   "devDependencies": {
