@@ -53,5 +53,10 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "standard-version": {
+    "scripts": {
+      "precommit": "chore(release): {{currentTag}} [skip ci]"
+    }
   }
 }
