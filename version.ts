@@ -204,7 +204,7 @@ async function run() {
       execSync(`git commit -m "chore(release): ${version} [skip ci]"`);
       execSync(`git tag -a ${version}  -m 'Release ${version}'`);
       execSync(`git push`);
-      execSync(`git push --tags'`);
+      execSync(`git push --tags`);
     }
 
     console.log(
