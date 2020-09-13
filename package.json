@@ -1,6 +1,6 @@
 {
-  "name": "@askuzminov/actions-test-core",
-  "version": "1.0.0",
+  "name": "@askuzminov/actions-test",
+  "version": "1.0.4",
   "description": "",
   "author": {
     "name": "Kuzminov Alexander",
@@ -14,21 +14,35 @@
     }
   ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/askuzminov/actions-test.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/askuzminov/actions-test/issues"
+  },
+  "homepage": "https://github.com/askuzminov/actions-test#readme",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "lerna run build",
-    "lerna:bootstrap": "lerna bootstrap --force-local --ignore-prepublish && npm run build",
-    "lerna:bootstrap:ci": "lerna bootstrap --ci --force-local --ignore-prepublish && npm run build",
-    "lerna:reinstall": "npm run lerna:clean && npm run lerna:bootstrap",
-    "lerna:clean": "npm run build:clean && lerna clean --yes",
-    "lerna:publish": "lerna publish --create-release github",
-    "lerna:canary": "lerna publish --canary --amend --allow-branch feature/*",
-    "postinstall": "if test \"$CI\" = \"true\" ; then npm run lerna:bootstrap:ci ; else npm run lerna:bootstrap ; fi"
+    "build:cjs": "tsc",
+    "build:esm": "tsc --module es2015 --outDir ./dist/esm/",
+    "build:types": "tsc --outDir ./dist/types/ --declaration --emitDeclarationOnly",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "release": "standard-version"
   },
   "devDependencies": {
-    "@commitlint/cli": "9.0.1",
-    "@commitlint/config-conventional": "9.0.1",
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-conventional": "11.0.0",
     "husky": "4.3.0",
-    "lerna": "3.22.1",
+    "standard-version": "9.0.0",
     "typescript": "4.0.2"
   },
   "husky": {

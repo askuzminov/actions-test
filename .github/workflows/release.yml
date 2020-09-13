@@ -42,10 +42,10 @@ jobs:
         run: |
           if [[ $BRANCH_NAME == 'master' ]]; then
             echo "Run publish production"
-            npm run lerna:publish
+            npm run release
           else
             echo "Run publish canary"
-            npm run lerna:canary -- --preid=$BRANCH_NAME.$BUILD_ID
+            npm run release -- --preid=$BRANCH_NAME.$BUILD_ID
           fi
       - name: Release NPM
         env:
