@@ -10,7 +10,7 @@
       "ignoreChanges": ["**/*.spec.ts", "**/*.spec.tsx", "**/tests/**"],
       "conventionalCommits": true,
       "yes": true,
-      "message": "chore(release): publish %s [skip ci]",
+      "message": "chore(release): publish %v [skip ci]",
       "registry": "https://npm.pkg.github.com"
     }
   }
