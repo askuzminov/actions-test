@@ -35,6 +35,15 @@ jobs:
           ssh-keyscan github.com > ~/.ssh/known_hosts
       - name: Install dependencies
         run: npm ci
+      # - name: Release GITHUB
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      #     NPM_TOKEN: ${{ secrets.GH_TOKEN }}
+      #     GIT_AUTHOR_NAME: ask-bot
+      #     GIT_AUTHOR_EMAIL: ask-bot
+      #     GIT_COMMITTER_NAME: ask-bot
+      #     GIT_COMMITTER_EMAIL: ask-bot
+      #   run: npm run semantic-release
       - name: Release GITHUB
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
