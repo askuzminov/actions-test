@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.3.1 (2020-09-13)
+
+
+### Bug Fixes
+
+* up ([26e864d](https://github.com/askuzminov/actions-test/commit/26e864dac266cdc3ec9f7eacb60b00b5bd3ec765))
+
 ## [1.3.0](https://github.com/askuzminov/actions-test/compare/v1.2.2...v1.3.0) (2020-09-13)
 
 
