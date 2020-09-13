@@ -1,0 +1,18 @@
+{
+  "packages": ["package"],
+  "version": "independent",
+  "command": {
+    "init": {
+      "exact": true
+    },
+    "publish": {
+      "allowBranch": ["master"],
+      "ignoreChanges": ["**/*.spec.ts", "**/*.spec.tsx", "**/tests/**", "**/*.md"],
+      "conventionalCommits": true,
+      "yes": true,
+      "message": "chore(release): publish %s [skip ci]",
+      "registry": "https://npm.pkg.github.com",
+      "contents": "dist"
+    }
+  }
+}

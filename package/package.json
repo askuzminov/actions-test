@@ -1,0 +1,24 @@
+{
+  "name": "@askuzminov/actions-test",
+  "version": "1.0.4",
+  "description": "",
+  "author": "ASK",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "build:app": "cp -r src dist",
+    "build:package": "mkdir -p dist && cp package.json dist && cp *.md dist",
+    "build": "npm run build:package && npm run build:app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/askuzminov/actions-test.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/askuzminov/actions-test/issues"
+  },
+  "homepage": "https://github.com/askuzminov/actions-test#readme"
+}
