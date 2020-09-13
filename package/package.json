@@ -2,14 +2,18 @@
   "name": "@askuzminov/actions-test",
   "version": "1.0.4",
   "description": "",
-  "author": "ASK",
-  "license": "ISC",
-  "main": "index.js",
-  "scripts": {
-    "build:app": "cp -r src dist",
-    "build:package": "mkdir -p dist && cp package.json dist && cp *.md dist",
-    "build": "npm run build:package && npm run build:app"
+  "author": {
+    "name": "Kuzminov Alexander",
+    "url": "https://github.com/askuzminov"
   },
+  "contributors": [
+    {
+      "name": "Kuzminov Alexander",
+      "url": "https://github.com/askuzminov",
+      "email": "askuzminov@gmail.com"
+    }
+  ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/askuzminov/actions-test.git"
@@ -20,5 +24,15 @@
   "bugs": {
     "url": "https://github.com/askuzminov/actions-test/issues"
   },
-  "homepage": "https://github.com/askuzminov/actions-test#readme"
+  "homepage": "https://github.com/askuzminov/actions-test#readme",
+  "main": "./cjs/index.js",
+  "module": "./esm/index.js",
+  "types": "./types/index.d.ts",
+  "scripts": {
+    "build:cjs": "tsc",
+    "build:esm": "tsc --module es2015 --outDir ./dist/esm/",
+    "build:types": "tsc --outDir ./dist/types/ --declaration --emitDeclarationOnly",
+    "build:package": "mkdir -p dist && cp package.json dist && cp *.md dist",
+    "build": "npm run build:package && npm run build:cjs && npm run build:esm && npm run build:types"
+  }
 }
