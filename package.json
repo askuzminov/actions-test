@@ -34,11 +34,17 @@
     "build:types": "tsc --outDir ./dist/types/ --declaration --emitDeclarationOnly",
     "build": "npm run build:cjs && npm run build:esm && npm run build:types",
     "release": "standard-version",
-    "github": "conventional-github-releaser -p angular"
+    "github": "conventional-github-releaser -p angular",
+    "semantic-release": "semantic-release"
   },
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
+    "@semantic-release/changelog": "5.0.1",
+    "@semantic-release/commit-analyzer": "8.0.1",
+    "@semantic-release/git": "9.0.0",
+    "@semantic-release/release-notes-generator": "9.0.1",
+    "semantic-release": "17.1.1",
     "conventional-github-releaser": "3.1.5",
     "husky": "4.3.0",
     "standard-version": "9.0.0",

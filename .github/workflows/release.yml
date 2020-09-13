@@ -38,18 +38,27 @@ jobs:
       - name: Release GITHUB
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
-          CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: |
-          if [[ $BRANCH_NAME == 'master' ]]; then
-            echo "Release production"
-            npm run release
-            git push --follow-tags origin master
-            npm run github
-          else
-            echo "Release canary"
-            npm run release -- --prerelease $BRANCH_NAME.$BUILD_ID
-          fi
+          NPM_TOKEN: ${{ secrets.GH_TOKEN }}
+          GIT_AUTHOR_NAME: ask-bot
+          GIT_AUTHOR_EMAIL: ask-bot
+          GIT_COMMITTER_NAME: ask-bot
+          GIT_COMMITTER_EMAIL: ask-bot
+        run: npm run semantic-release
+      # - name: Release GITHUB
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      #     NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+      #     CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{ secrets.GH_TOKEN }}
+      #   run: |
+      #     if [[ $BRANCH_NAME == 'master' ]]; then
+      #       echo "Release production"
+      #       npm run release
+      #       git push --follow-tags origin master
+      #       npm run github
+      #     else
+      #       echo "Release canary"
+      #       npm run release -- --prerelease $BRANCH_NAME.$BUILD_ID
+      #     fi
       - name: Publish GITHUB
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
