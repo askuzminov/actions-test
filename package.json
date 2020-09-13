@@ -55,8 +55,6 @@
     ]
   },
   "standard-version": {
-    "scripts": {
-      "precommit": "chore(release): {{currentTag}} [skip ci]"
-    }
+    "releaseCommitMessageFormat": "chore(release): {{currentTag}} [skip ci]"
   }
 }
