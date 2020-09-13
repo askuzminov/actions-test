@@ -205,16 +205,12 @@ async function run() {
       execSync(`git push`);
       execSync(`git push --tags`);
 
-      const hash = ex('git rev-parse HEAD');
-
       console.log(
         await githubRelese({
           tag_name: version,
-          target_commitish: hash,
           name: version,
           body: md,
-          draft: false,
-          prerelease: !!ARG.prerelease,
+          prerelease: false,
         })
       );
     }
