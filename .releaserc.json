@@ -2,7 +2,7 @@
   "branches": [
     "master",
     {
-      "name": "beta",
+      "name": "feature/*",
       "prerelease": true
     }
   ],
@@ -18,7 +18,7 @@
     [
       "@semantic-release/git",
       {
-        "assets": ["src/**/*.*", "docs", "package.json"],
+        "assets": ["docs", "package.json"],
         "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }
     ],
