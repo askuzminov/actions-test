@@ -198,25 +198,25 @@ async function run() {
     console.log(md);
     console.log(version);
 
-    if (ARG.prerelease) {
+    if (!ARG.prerelease) {
       writeFileSync(join(process.cwd(), 'CHANGELOG.md'), `${TITLE}${md}${changelog}`, 'utf8');
       execSync('git add .');
       execSync(`git commit -m "chore(release): ${version} [skip ci]"`);
       execSync(`git tag -a ${version}  -m 'Release ${version}'`);
       execSync(`git push`);
       execSync(`git push --tags`);
-    }
 
-    console.log(
-      await githubRelese({
-        tag_name: version,
-        target_commitish: hash,
-        name: version,
-        body: md,
-        draft: false,
-        prerelease: !!ARG.prerelease,
-      })
-    );
+      console.log(
+        await githubRelese({
+          tag_name: version,
+          target_commitish: hash,
+          name: version,
+          body: md,
+          draft: false,
+          prerelease: !!ARG.prerelease,
+        })
+      );
+    }
   }
 }
 
