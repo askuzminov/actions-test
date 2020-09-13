@@ -56,7 +56,6 @@ const commitsRaw = ex(`git log ${tag.trim()}..HEAD --pretty=format:'{ "short": "
   /\n/g,
   '\\n'
 );
-const hash = ex('git rev-parse HEAD');
 
 console.log(commitsRaw);
 
@@ -205,6 +204,8 @@ async function run() {
       execSync(`git tag -a ${version}  -m 'Release ${version}'`);
       execSync(`git push`);
       execSync(`git push --tags`);
+
+      const hash = ex('git rev-parse HEAD');
 
       console.log(
         await githubRelese({
