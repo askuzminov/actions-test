@@ -1,6 +1,7 @@
 import { execSync } from 'child_process';
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
+import { request } from 'https';
 
 interface RawLog {
   short: string;
@@ -18,6 +19,17 @@ interface Message {
   shortHash: string;
 }
 
+interface Release {
+  tag_name: string;
+  target_commitish?: string;
+  name?: string;
+  body?: string;
+  draft?: boolean;
+  prerelease?: boolean;
+}
+
+const { GH_TOKEN } = process.env;
+
 const ARG = arg();
 const TITLE = `# Changelog\n\nAll notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.\n`;
 const rParse = /^(\w*)(?:\(([\w$.\-*/ ]*)\))?: (.*)$/;
@@ -27,22 +39,32 @@ const pack = JSON.parse(readFileSync(join(process.cwd(), 'package.json'), 'utf8'
   string | undefined | Record<string, string | undefined>
 >;
 
+let changelog = '';
+try {
+  changelog = readFileSync(join(process.cwd(), 'CHANGELOG.md'), 'utf8');
+} catch {}
+
+if (changelog.startsWith(TITLE)) {
+  changelog = changelog.slice(TITLE.length);
+}
+
 const URL = getURL();
+const ex = (cmd: string) => execSync(cmd, { encoding: 'utf8' });
 
 const tag = ex(`git describe --tags --abbrev=0 --first-parent`);
-const commitsRaw = ex(
-  `git log ${tag.trim()}..HEAD --pretty=format:'{ "short": "%h", "hash": "%H", "title": "%s", "body": "%b", "author": "%d" }'`
+const commitsRaw = ex(`git log ${tag.trim()}..HEAD --pretty=format:'{ "short": "%h", "hash": "%H", "title": "%s", "body": "%b" }'`).replace(
+  /\n/g,
+  '\\n'
 );
+const hash = ex('git rev-parse HEAD');
+
+console.log(commitsRaw);
 
 const commits = commitsRaw
   .split('\n')
   .map((s) => s.trim())
   .filter(Boolean)
   .map((s) => JSON.parse(s)) as RawLog[];
-
-function ex(cmd: string) {
-  return execSync(cmd, { encoding: 'utf8' });
-}
 
 function arg<T extends Record<string, string | boolean>>(): T {
   const ar = process.argv.slice(2);
@@ -132,18 +154,15 @@ function nextVersion(config: ReturnType<typeof parse>, preid?: string | boolean)
   ).trim();
 }
 
-function getURL(): string {
+function getRepo() {
   const parsed = /([^/.]+)[/.]+([^/.]+)[/.]+[^/.]+$/.exec((typeof pack.repository === 'object' && pack.repository?.url) || '');
-  return parsed ? `https://github.com/${parsed[1]}/${parsed[2]}` : '';
+
+  return parsed ? { user: parsed[1], repository: parsed[2] } : undefined;
 }
 
-let changelog = '';
-try {
-  changelog = readFileSync(join(process.cwd(), 'CHANGELOG.md'), 'utf8');
-} catch {}
-
-if (changelog.startsWith(TITLE)) {
-  changelog = changelog.slice(TITLE.length);
+function getURL(): string {
+  const repo = getRepo();
+  return repo ? `https://github.com/${repo.user}/${repo.repository}` : '';
 }
 
 function getDate() {
@@ -165,7 +184,7 @@ function makeMD(config: ReturnType<typeof parse>, version: string) {
   return md;
 }
 
-function run() {
+async function run() {
   const config = parse(commits);
 
   console.log(config);
@@ -179,12 +198,75 @@ function run() {
     console.log(md);
     console.log(version);
 
-    // writeFileSync(join(process.cwd(), 'CHANGELOG.md'), `${TITLE}${md}${changelog}`, 'utf8');
+    if (ARG.prerelease) {
+      writeFileSync(join(process.cwd(), 'CHANGELOG.md'), `${TITLE}${md}${changelog}`, 'utf8');
+      execSync('git add .');
+      execSync(`git commit -m "chore(release): ${version} [skip ci]"`);
+      execSync(`git tag -a ${version}  -m 'Release ${version}'`);
+      execSync(`git push'`);
+      execSync(`git push --tags'`);
+    }
 
-    // execSync('git add .');
-    // execSync(`git commit -m "chore(release): ${version} [skip ci]"`);
-    // execSync(`git tag -a ${version}  -m 'Release ${version}'`);
+    console.log(
+      await githubRelese({
+        tag_name: version,
+        target_commitish: hash,
+        name: version,
+        body: md,
+        draft: false,
+        prerelease: !!ARG.prerelease,
+      })
+    );
   }
 }
 
 run();
+
+function githubRelese(setup: Release) {
+  const repo = getRepo();
+
+  if (!repo || !GH_TOKEN) {
+    return;
+  }
+
+  return new Promise((resolve, reject) => {
+    const req = request(
+      {
+        host: 'api.github.com',
+        port: 443,
+        path: `/repos/${repo.user}/${repo.repository}/releases`,
+        method: 'POST',
+        headers: {
+          Authorization: `token ${GH_TOKEN}`,
+          Accept: 'application/json',
+          'user-agent': 'Awesome-Octocat-App',
+        },
+      },
+      (res) => {
+        res.setEncoding('utf8');
+
+        let data = '';
+        res.on('data', (chunk) => {
+          data += chunk;
+        });
+        res.on('end', () => {
+          if (res.statusCode >= 200 && res.statusCode < 400) {
+            resolve(data);
+          } else {
+            reject(data);
+          }
+        });
+      }
+    );
+
+    req.on('error', (e) => {
+      console.error(`Request error: ${e.message}`);
+
+      reject(e.message);
+    });
+
+    req.write(JSON.stringify(setup));
+
+    req.end();
+  });
+}

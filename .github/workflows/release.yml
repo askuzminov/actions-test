@@ -43,8 +43,6 @@ jobs:
           if [[ $BRANCH_NAME == 'master' ]]; then
             echo "Release production"
             npm run release
-            git push
-            git push --tags
           else
             echo "Release canary"
             npm run release -- prerelease=$BRANCH_NAME.$BUILD_ID

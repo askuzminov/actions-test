@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.13.2-132.2](https://github.com/askuzminov/actions-test/compare/v1.13.1...v1.13.2-132.2) (2020-9-13)
+
+### feat
+
+- new ci ([84658e3](https://github.com/askuzminov/actions-test/commit/84658e3e0a8ef0b6843e3ddccba9159afb46847d))
+
+  ```BREAKING-CHANGE: test
+```
+
+
 ## [v1.13.1](https://github.com/askuzminov/actions-test/compare/v1.3.4...v1.13.1) (2020-9-13)
 
 ### chore
