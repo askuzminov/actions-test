@@ -39,20 +39,36 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+          CONVENTIONAL_GITHUB_RELEASER_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           if [[ $BRANCH_NAME == 'master' ]]; then
-            echo "Run publish production"
+            echo "Release production"
             npm run release
+            npm run github
+            git push
           else
-            echo "Run publish canary"
-            npm run release -- --preid=$BRANCH_NAME.$BUILD_ID
+            echo "Release canary"
+            npm run release -- --prerelease $BRANCH_NAME.$BUILD_ID
           fi
-      - name: Release NPM
+      - name: Publish GITHUB
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           if [[ $BRANCH_NAME == 'master' ]]; then
-            echo "Run publish production"
+            echo "Publish production"
+            npm publish --tag latest --access public --registry https://npm.pkg.github.com
           else
-            echo "Run publish canary"
+            echo "Publish canary"
+            npm publish --tag canary --access public --registry https://npm.pkg.github.com
+          fi
+      - name: Publish NPM
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          if [[ $BRANCH_NAME == 'master' ]]; then
+            echo "Publish production"
+            # npm publish --tag latest --access public --registry https://registry.npmjs.org
+          else
+            echo "Publish canary"
+            # npm publish --tag canary --access public --registry https://registry.npmjs.org
           fi

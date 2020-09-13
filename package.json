@@ -18,9 +18,6 @@
     "type": "git",
     "url": "https://github.com/askuzminov/actions-test.git"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "bugs": {
     "url": "https://github.com/askuzminov/actions-test/issues"
   },
@@ -36,11 +33,13 @@
     "build:esm": "tsc --module es2015 --outDir ./dist/esm/",
     "build:types": "tsc --outDir ./dist/types/ --declaration --emitDeclarationOnly",
     "build": "npm run build:cjs && npm run build:esm && npm run build:types",
-    "release": "standard-version"
+    "release": "standard-version",
+    "github": "conventional-github-releaser -p angular"
   },
   "devDependencies": {
     "@commitlint/cli": "11.0.0",
     "@commitlint/config-conventional": "11.0.0",
+    "conventional-github-releaser": "3.1.5",
     "husky": "4.3.0",
     "standard-version": "9.0.0",
     "typescript": "4.0.2"
