@@ -73,19 +73,19 @@ async function run() {
     console.log(md);
 
     if (!ARG.prerelease) {
-      if (ARG['disable-md'] !== false) {
+      if (!ARG['disable-md']) {
         writeChangelog(`${TITLE}${md}${changelog}`);
       }
 
-      if (ARG['disable-git'] !== false) {
+      if (!ARG['disable-git']) {
         writeGit(version);
 
-        if (ARG['disable-push'] !== false) {
+        if (!ARG['disable-push']) {
           pushGit();
         }
       }
 
-      if (ARG['disable-github'] !== false) {
+      if (!ARG['disable-github']) {
         if (!GH_TOKEN) {
           console.warn('ENV `GH_TOKEN` not found');
         } else if (!repo) {
