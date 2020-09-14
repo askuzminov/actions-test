@@ -17,7 +17,7 @@ export function parseItem(log: RawLog): Message {
         major: parsed[3] === '!',
       }
     : {
-        type: 'other',
+        type: 'Other',
         content: log.title,
         shortHash: log.short,
         hash: log.hash,

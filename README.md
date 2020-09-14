@@ -106,9 +106,9 @@ echo '//npm.pkg.github.com/:_authToken=${GH_TOKEN}' >> ~/.npmrc
 
 if [[ $BRANCH_NAME == 'master' ]]; then
   echo "Release production"
-  npx simple-release publish-github publish-npmjs
+  npx @askuzminov/simple-release publish-github publish-npmjs
 else
   echo "Release canary"
-  npx simple-release publish-github publish-npmjs prerelease=$BRANCH_NAME.$BUILD_ID
+  npx @askuzminov/simple-release publish-github publish-npmjs prerelease=$BRANCH_NAME.$BUILD_ID
 fi
 ```
