@@ -1,6 +1,6 @@
 import { Message, RawLog } from './types';
 
-const rParse = /^(\w*)(?:\(([\w$.\-*/ ]*)\))?: (.*)$/;
+export const rParse = /^(\w*)(?:\(([\w$.\-*/ ]*)\))?: (.*)$/m;
 const rBreak = /BREAKING CHANGES?:/i;
 
 export function parseItem(log: RawLog): Message {

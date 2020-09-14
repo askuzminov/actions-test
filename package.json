@@ -29,7 +29,8 @@
   "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
   "bin": {
-    "actions-test": "./dist/cjs/index.js"
+    "simple-release": "./dist/cjs/index.js",
+    "simple-release-lint": "./dist/cjs/lint.js"
   },
   "files": [
     "dist"
@@ -50,8 +51,6 @@
     "dev": "ts-node -T src"
   },
   "devDependencies": {
-    "@commitlint/cli": "11.0.0",
-    "@commitlint/config-conventional": "11.0.0",
     "@types/node": "14.10.1",
     "husky": "4.3.0",
     "lint-staged": "10.3.0",
@@ -62,11 +61,6 @@
     "tslint-config-prettier": "1.18.0",
     "tslint-plugin-prettier": "2.3.0",
     "typescript": "4.0.2"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -84,7 +78,7 @@
     "hooks": {
       "pre-commit": "lint-staged && npm run check-types",
       "pre-push": "npm run lint && npm run test",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "ts-node src/lint"
     }
   },
   "prettier": {
