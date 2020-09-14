@@ -58,6 +58,10 @@ const commitsRaw = ex(
   `git log ${tag}..${curentHash} --pretty=format:'{ "short": "%h", "hash": "%H", "title": "%s", "body": "%b" }'`
 ).replace(/\n/g, '\\n');
 
+console.log(curentHash);
+console.log(tag);
+console.log(commitsRaw);
+
 const commits = commitsRaw
   .split('\n')
   .map((s) => s.trim())
