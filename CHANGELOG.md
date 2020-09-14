@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.13.5](https://github.com/askuzminov/actions-test/compare/v1.13.4...v1.13.5) (2020-9-14)
+
+### fix
+
+- parse ([d8c7d9b](https://github.com/askuzminov/actions-test/commit/d8c7d9bd7151297e1f6b85b691a4a556da77ed71))
+- ci ([a2008a7](https://github.com/askuzminov/actions-test/commit/a2008a7a45ca30a29cbd47400acab641eca51992))
+- git ([64f58f7](https://github.com/askuzminov/actions-test/commit/64f58f7480f49ec3a875c032b76cc8668bd9b355))
+- tag ([715aee5](https://github.com/askuzminov/actions-test/commit/715aee509ac214f850f2bbb3723eaa04b742f5e6))
+- debug ([c6c34df](https://github.com/askuzminov/actions-test/commit/c6c34df4a626252296689431412a7b4581739967))
+- new ([30e36ee](https://github.com/askuzminov/actions-test/commit/30e36ee78cd104b6300bcab047f41fe3e72284d2))
+- fetch ([b5d543e](https://github.com/askuzminov/actions-test/commit/b5d543e8f6347f53486ab5ca486fee1a8f974336))
+- git ([3a5b770](https://github.com/askuzminov/actions-test/commit/3a5b770261d1920689ba2e757f3c611a4b519df7))
+- some ([44d8390](https://github.com/askuzminov/actions-test/commit/44d8390b1014ad7e5ad5f40bdf2fee441ec4ead6))
+
 ## [v1.13.4](https://github.com/askuzminov/actions-test/compare/v1.13.3...v1.13.4) (2020-9-13)
 
 ### fix
