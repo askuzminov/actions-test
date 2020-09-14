@@ -57,25 +57,3 @@ jobs:
             echo "Release canary"
             npm run release -- publish-github prerelease=$BRANCH_NAME.$BUILD_ID
           fi
-      # - name: Publish GITHUB
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
-      #   run: |
-      #     if [[ $BRANCH_NAME == 'master' ]]; then
-      #       echo "Publish production"
-      #       npm publish --tag latest --access public --registry https://npm.pkg.github.com
-      #     else
-      #       echo "Publish canary"
-      #       npm publish --tag canary --access public --registry https://npm.pkg.github.com
-      #     fi
-      # - name: Publish NPM
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #   run: |
-      #     if [[ $BRANCH_NAME == 'master' ]]; then
-      #       echo "Publish production"
-      #       # npm publish --tag latest --access public --registry https://registry.npmjs.org
-      #     else
-      #       echo "Publish canary"
-      #       # npm publish --tag canary --access public --registry https://registry.npmjs.org
-      #     fi
