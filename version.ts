@@ -51,7 +51,7 @@ if (changelog.startsWith(TITLE)) {
 const URL = getURL();
 const ex = (cmd: string) => execSync(cmd, { encoding: 'utf8' }).trim();
 
-ex(`git fetch remote --tags`);
+// ex(`git fetch remote --tags`);
 const curentHash = ex('git rev-parse HEAD');
 const tag = ex(`git describe --tags --abbrev=0 --first-parent`);
 const commitsRaw = ex(
