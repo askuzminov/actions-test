@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.14.0](https://github.com/askuzminov/actions-test/compare/v1.13.5...v1.14.0) (2020-9-14)
+
+### ci
+
+- env ([01bc61e](https://github.com/askuzminov/actions-test/commit/01bc61e420b073e9823a88f4411d40f0d27ebbf4))
+- fix token ([772a7ed](https://github.com/askuzminov/actions-test/commit/772a7edcee5ebbb54c71c981c6a94bd9146342f3))
+- add steps ([908a664](https://github.com/askuzminov/actions-test/commit/908a6642ea79e0dff69eb95e49250e4d82d5c164))
+
+### feat
+
+- publish ([893983e](https://github.com/askuzminov/actions-test/commit/893983e906c09f055b45ef83c49fd9af20e642a8))
+
+### fix
+
+- publish github ([ad4b488](https://github.com/askuzminov/actions-test/commit/ad4b488488fd29711872ebcfde870af833ac7823))
+- url ([d10e8da](https://github.com/askuzminov/actions-test/commit/d10e8da219d521f2040230d510f8bd5fd7e94ff2))
+
 ## [v1.13.5](https://github.com/askuzminov/actions-test/compare/v1.13.4...v1.13.5) (2020-9-14)
 
 ### fix
