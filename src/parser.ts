@@ -44,7 +44,7 @@ export function parse(commits: RawLog[], url: string) {
     (groupsRaw[item.type] ??= []).push(
       `${item.scope ? `**${item.scope}**: ` : ''}${item.content}${
         url ? ` ([${item.shortHash}](${url}/commit/${item.hash}))` : ''
-      }${item.body ? `\n\n\`\`\`${item.body}\`\`\`\n` : ''}`
+      }${item.body ? `\n\n\`\`\`\n${item.body}\n\`\`\`\n` : ''}`
     );
 
     isEmpty = false;
