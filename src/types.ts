@@ -32,6 +32,7 @@ export interface Message {
   body: string;
   hash: string;
   shortHash: string;
+  major: boolean;
 }
 
 export interface Markdown {

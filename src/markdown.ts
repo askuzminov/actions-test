@@ -1,3 +1,4 @@
+import { whitelist } from './config';
 import { Markdown } from './types';
 
 export function makeMD({ url, config, version, tag, date }: Markdown) {
@@ -5,7 +6,7 @@ export function makeMD({ url, config, version, tag, date }: Markdown) {
 
   // tslint:disable-next-line: forin
   for (const group in config.groups) {
-    md += `\n### ${group}\n\n`;
+    md += `\n### ${whitelist[group] || group}\n\n`;
 
     for (const item of config.groups[group]) {
       md += `- ${item}\n`;

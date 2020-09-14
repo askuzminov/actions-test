@@ -48,7 +48,7 @@
     "tslint:fix": "npm run tslint -- --fix",
     "lint": "npm run tslint",
     "release": "node ./dist/cjs/index.js",
-    "dev": "ts-node -T src"
+    "dev": "ts-node -T src disable-git disable-github"
   },
   "devDependencies": {
     "@types/node": "14.10.1",
