@@ -49,14 +49,14 @@ if (changelog.startsWith(TITLE)) {
 }
 
 const URL = getURL();
-const ex = (cmd: string) => execSync(cmd, { encoding: 'utf8' });
+const ex = (cmd: string) => execSync(cmd, { encoding: 'utf8' }).trim();
 
 ex(`git fetch --tags`);
+const curentHash = ex('git rev-parse HEAD');
 const tag = ex(`git describe --always --tags --abbrev=0 --first-parent`);
-const commitsRaw = ex(`git log ${tag.trim()}..HEAD --pretty=format:'{ "short": "%h", "hash": "%H", "title": "%s", "body": "%b" }'`).replace(
-  /\n/g,
-  '\\n'
-);
+const commitsRaw = ex(
+  `git log ${tag}..${curentHash} --pretty=format:'{ "short": "%h", "hash": "%H", "title": "%s", "body": "%b" }'`
+).replace(/\n/g, '\\n');
 
 const commits = commitsRaw
   .split('\n')
@@ -150,7 +150,7 @@ function nextVersion(config: ReturnType<typeof parse>, preid?: string | boolean)
         ? 'minor'
         : 'patch'
     } --no-git-tag-version`
-  ).trim();
+  );
 }
 
 function getRepo() {
@@ -170,7 +170,7 @@ function getDate() {
 }
 
 function makeMD(config: ReturnType<typeof parse>, version: string) {
-  let md = `\n## ${URL ? `[${version}](${URL}/compare/${tag.trim()}...${version})` : version} (${getDate()})\n`;
+  let md = `\n## ${URL ? `[${version}](${URL}/compare/${tag}...${version})` : version} (${getDate()})\n`;
 
   for (const group in config.groups) {
     md += `\n### ${group}\n\n`;
