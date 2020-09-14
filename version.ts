@@ -53,7 +53,7 @@ const ex = (cmd: string) => execSync(cmd, { encoding: 'utf8' }).trim();
 
 ex(`git fetch --tags`);
 const curentHash = ex('git rev-parse HEAD');
-const tag = ex(`git describe --always --tags --abbrev=0 --first-parent`);
+const tag = ex(`git describe --tags --abbrev=0 --first-parent`);
 const commitsRaw = ex(
   `git log ${tag}..${curentHash} --pretty=format:'{ "short": "%h", "hash": "%H", "title": "%s", "body": "%b" }'`
 ).replace(/\n/g, '\\n');
