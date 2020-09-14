@@ -65,6 +65,18 @@ or
 <type>(scope): <description>
 ```
 
+or
+
+```bash
+<type>!: <description>
+```
+
+or
+
+```bash
+<type>(scope)!: <description>
+```
+
 ## Available types
 
 - break - MAJOR
@@ -79,6 +91,8 @@ or
 - revert - PATCH
 - style - PATCH
 - test - PATCH
+
+For MAJOR can be used `!` (example `refactor!: new lib`).
 
 For MAJOR also can be used `BREAKING CHANGES:` or `BREAKING CHANGE:` in description of commit.
 

@@ -2,6 +2,7 @@
 
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import { whitelist } from './config';
 import { rParse } from './parser';
 
 // tslint:disable: no-console
@@ -11,23 +12,9 @@ const commit = readFileSync(
   'utf8'
 );
 
-const whitelist: Record<string, boolean> = {
-  break: true,
-  feat: true,
-  build: true,
-  chore: true,
-  ci: true,
-  docs: true,
-  fix: true,
-  perf: true,
-  refactor: true,
-  revert: true,
-  style: true,
-  test: true,
-};
-
 const parsed = rParse.exec(commit);
-const example = '<type>: <description> or <type>(scope): <description>';
+const example =
+  '<type>: <description> or <type>(scope): <description> or <type>!: <description> or <type>(scope)!: <description>';
 
 function error(): never {
   console.error(`Schema of message: ${example}`);
