@@ -53,10 +53,10 @@ jobs:
         run: |
           if [[ $BRANCH_NAME == 'master' ]]; then
             echo "Release production"
-            npm run release publish-github
+            npm run release publish-github publish-npmjs
           else
             echo "Release canary"
-            npm run release -- publish-github prerelease=$BRANCH_NAME.$BUILD_ID
+            npm run release -- publish-github publish-npmjs prerelease=$BRANCH_NAME.$BUILD_ID
           fi
       # - name: Publish GITHUB
       #   env:
