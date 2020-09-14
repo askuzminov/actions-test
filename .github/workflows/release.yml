@@ -9,6 +9,9 @@ jobs:
     name: Release
     runs-on: ubuntu-18.04
     if: "!contains(github.event.head_commit.message, 'skip ci')"
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -39,9 +42,6 @@ jobs:
           echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> ~/.npmrc
           echo '//npm.pkg.github.com/:_authToken=${GH_TOKEN}' >> ~/.npmrc
       - name: Install dependencies
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm ci
       - name: Check
         run: |
@@ -50,9 +50,6 @@ jobs:
       - name: Build
         run: npm run build
       - name: Release GITHUB
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           if [[ $BRANCH_NAME == 'master' ]]; then
             echo "Release production"
