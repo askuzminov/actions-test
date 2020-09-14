@@ -52,21 +52,22 @@ const URL = getURL();
 const ex = (cmd: string) => execSync(cmd, { encoding: 'utf8' }).trim();
 
 // ex(`git fetch remote --tags`);
+const delim = '###END%!@^%$';
 const curentHash = ex('git rev-parse HEAD');
 const tag = ex(`git describe --tags --abbrev=0 --first-parent`);
 const commitsRaw = ex(
-  `git log ${tag}..${curentHash} --pretty=format:'{ "short": "%h", "hash": "%H", "title": "%s", "body": "%b" }'`
-).replace(/\n/g, '\\n');
+  `git log ${tag}..${curentHash} --pretty=format:'{ "short": "%h", "hash": "%H", "title": "%s", "body": "%b" }${delim}'`
+);
 
 console.log(curentHash);
 console.log(tag);
 console.log(commitsRaw);
 
 const commits = commitsRaw
-  .split('\n')
+  .split(delim)
   .map((s) => s.trim())
   .filter(Boolean)
-  .map((s) => JSON.parse(s)) as RawLog[];
+  .map((s) => JSON.parse(s.replace(/\n/g, '\\n'))) as RawLog[];
 
 function arg<T extends Record<string, string | boolean>>(): T {
   const ar = process.argv.slice(2);
