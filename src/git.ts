@@ -15,13 +15,11 @@ export const getTag = (): string => {
   }
 };
 
-export const getCommitsRaw = () =>
-  ex(
-    `git log ${getTag()}..${getHash()} --pretty=format:'{ "short": "%h", "hash": "%H", "title": "%s", "body": "%b" }${delim}'`
-  );
+export const getCommitsRaw = (from: string, to: string) =>
+  ex(`git log ${from}..${to} --pretty=format:'{ "short": "%h", "hash": "%H", "title": "%s", "body": "%b" }${delim}'`);
 
 export const getCommits = () =>
-  getCommitsRaw()
+  getCommitsRaw(getTag(), getHash())
     .split(delim)
     .map(s => s.trim())
     .filter(Boolean)

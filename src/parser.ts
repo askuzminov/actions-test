@@ -1,6 +1,6 @@
 import { Message, RawLog } from './types';
 
-const rParse = /^(\w*)(?:\(([\w$.\-*/ ]*)\))?: (.*)$/;
+export const rParse = /^(\w*)(?:\(([\w$.\-*/ ]*)\))?: (.*)$/m;
 const rBreak = /BREAKING CHANGES?:/i;
 
 export function parseItem(log: RawLog): Message {
@@ -33,7 +33,7 @@ export function parse(commits: RawLog[], url: string) {
   for (const commit of commits) {
     const item = parseItem(commit);
 
-    if (item.type === 'break' || rBreak.test(item.body)) {
+    if (item.type === 'break' || rBreak.test(item.content) || rBreak.test(item.body)) {
       isMajor = true;
     }
 
