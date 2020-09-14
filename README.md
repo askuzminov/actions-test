@@ -31,7 +31,7 @@ package.json
 ## Commands
 
 - **help** -> get command list
-- **prerelease** -> only up version');
+- **prerelease** -> only up version, not git changes and release
 - **prerelease=SOME.NEW.VERSION** -> only up version with custom ID
 - **disable-push** -> prevent git push
 - **disable-git** -> prevent git commit and tag
