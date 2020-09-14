@@ -6,6 +6,7 @@ Full auto pipeline for simple releases your packages.
 - Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines
 - Generate CHANGELOG.md
 - Update package.json, package-lock.json
+- Parse body commits, support utf-8 and emoji 🚀
 - Commit, tag and push new version
 - Upload release on Github
 - Upload package on Github
