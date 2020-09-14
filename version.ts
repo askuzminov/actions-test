@@ -51,7 +51,7 @@ if (changelog.startsWith(TITLE)) {
 const URL = getURL();
 const ex = (cmd: string) => execSync(cmd, { encoding: 'utf8' }).trim();
 
-ex(`git fetch --tags`);
+ex(`git fetch remote --tags`);
 const curentHash = ex('git rev-parse HEAD');
 const tag = ex(`git describe --tags --abbrev=0 --first-parent`);
 const commitsRaw = ex(
@@ -203,7 +203,7 @@ async function run() {
       writeFileSync(join(process.cwd(), 'CHANGELOG.md'), `${TITLE}${md}${changelog}`, 'utf8');
       execSync('git add .');
       execSync(`git commit -m "chore(release): ${version} [skip ci]"`);
-      execSync(`git tag -a ${version}  -m 'Release ${version}'`);
+      execSync(`git tag -a ${version} -m 'Release ${version}'`);
       execSync(`git push`);
       execSync(`git push --tags`);
 
