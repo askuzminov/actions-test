@@ -52,9 +52,9 @@ All notable changes to this project will be documented in this file. See [Conven
 
 - new ci ([84658e3](https://github.com/askuzminov/actions-test/commit/84658e3e0a8ef0b6843e3ddccba9159afb46847d))
 
-  ```BREAKING-CHANGE: test
 ```
-
+BREAKING-CHANGE: test
+```
 
 ## [v1.13.1](https://github.com/askuzminov/actions-test/compare/v1.3.4...v1.13.1) (2020-9-13)
 
@@ -72,12 +72,11 @@ All notable changes to this project will be documented in this file. See [Conven
 
 - Merge pull request #7 from askuzminov/feature/test ([60bab0e](https://github.com/askuzminov/actions-test/commit/60bab0e98bb5ddfdec944970cf33ed05bf66cda8))
 
-  ```fix: new```
+  `fix: new`
 
 - Merge pull request #6 from askuzminov/feature/test ([2ba3c18](https://github.com/askuzminov/actions-test/commit/2ba3c180cc754fa5974afad84772a2a0cb2716e2))
 
-  ```fix: x```
-
+  `fix: x`
 
 ## [v1.13.0](https://github.com/askuzminov/actions-test/compare/v1.3.3...v1.13.0) (2020-9-13)
 
@@ -103,16 +102,15 @@ All notable changes to this project will be documented in this file. See [Conven
 
 - Merge pull request #7 from askuzminov/feature/test ([60bab0e](https://github.com/askuzminov/actions-test/commit/60bab0e98bb5ddfdec944970cf33ed05bf66cda8))
 
-  ```fix: new```
+  `fix: new`
 
 - Merge pull request #6 from askuzminov/feature/test ([2ba3c18](https://github.com/askuzminov/actions-test/commit/2ba3c180cc754fa5974afad84772a2a0cb2716e2))
 
-  ```fix: x```
+  `fix: x`
 
 - Merge pull request #5 from askuzminov/feature/test ([dd8c01f](https://github.com/askuzminov/actions-test/commit/dd8c01f8bfb7d83a08750362da35639a402efe15))
 
-  ```Feature/test```
-
+  `Feature/test`
 
 <a name="v1.12.0"></a>
 
