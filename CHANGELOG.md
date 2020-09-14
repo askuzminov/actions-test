@@ -2,6 +2,33 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.15.0](https://github.com/askuzminov/actions-test/compare/v1.14.0...v1.15.0) (2020-9-14)
+
+### ci
+
+- cleanup code ([053a004](https://github.com/askuzminov/actions-test/commit/053a0044b25dd5ea5b4b68521b35a6bc13864fee))
+- disable npmjs ([00e4698](https://github.com/askuzminov/actions-test/commit/00e4698a88003bf05d4e14fca139e8d99aa48e69))
+
+### docs
+
+- fix typo ([fd20714](https://github.com/askuzminov/actions-test/commit/fd20714c9966e127e9fd3a5000290ec410f3719b))
+
+### feat
+
+- add some ([12217fb](https://github.com/askuzminov/actions-test/commit/12217fbe7091567487d9b592ba3822ff4e76376c))
+- npm ([73864c2](https://github.com/askuzminov/actions-test/commit/73864c2ed4b75bbf4c836a2c09f1c60aa5b8d969))
+
+### fix
+
+- publish ([de1dba8](https://github.com/askuzminov/actions-test/commit/de1dba851025880a0f38be81fa89dde839ab5650))
+
+### other
+
+- Merge pull request #8 from askuzminov/feature/test-npm ([16cce2f](https://github.com/askuzminov/actions-test/commit/16cce2f842abc594310331105ccdca4f570b1889))
+
+```Feature/test npm```
+
+
 ## [v1.14.0](https://github.com/askuzminov/actions-test/compare/v1.13.5...v1.14.0) (2020-9-14)
 
 ### ci
