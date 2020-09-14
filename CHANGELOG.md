@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.17.3](https://github.com/askuzminov/actions-test/compare/v1.17.2...v1.17.3) (2020-9-14)
+
+### Bug Fixes
+
+- some ([ea585cb](https://github.com/askuzminov/actions-test/commit/ea585cb7935dfb38e21adea72bba94d15a01443d))
+
+### others
+
+- Merge pull request #14 from askuzminov/feature/test-npm ([ac0ed20](https://github.com/askuzminov/actions-test/commit/ac0ed2060116922d692d3ad2783441bf92e2375e))
+
+```
+fix: some
+```
+
+
 ## [v1.17.2](https://github.com/askuzminov/actions-test/compare/v1.17.1...v1.17.2) (2020-9-14)
 
 ### Chore
