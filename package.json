@@ -29,7 +29,7 @@
   "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
   "bin": {
-    "actions-test": "dist/index.js"
+    "actions-test": "./dist/cjs/index.js"
   },
   "files": [
     "dist"
@@ -46,7 +46,8 @@
     "tslint": "tslint -c tslint.json -p tsconfig.json",
     "tslint:fix": "npm run tslint -- --fix",
     "lint": "npm run tslint",
-    "release": "actions-test"
+    "release": "node ./dist/cjs/index.js",
+    "dev": "ts-node -T src"
   },
   "devDependencies": {
     "@commitlint/cli": "11.0.0",

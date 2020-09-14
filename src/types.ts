@@ -39,6 +39,7 @@ export interface Markdown {
   tag: string;
   version: string;
   date: string;
+  url: string;
 }
 
 export type ParseConfig = ReturnType<typeof parse>;

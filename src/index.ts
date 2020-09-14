@@ -67,7 +67,7 @@ async function run() {
     console.log('No change found in GIT');
   } else {
     const version = nextVersion(config, ARG.prerelease);
-    const md = makeMD({ config, version, tag, date });
+    const md = makeMD({ config, version, tag, date, url });
 
     console.log(version);
     console.log(md);

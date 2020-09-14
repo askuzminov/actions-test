@@ -1,7 +1,7 @@
 import { Markdown } from './types';
 
-export function makeMD({ config, version, tag, date }: Markdown) {
-  let md = `\n## ${URL ? `[${version}](${URL}/compare/${tag}...${version})` : version} (${date})\n`;
+export function makeMD({ url, config, version, tag, date }: Markdown) {
+  let md = `\n## ${url ? `[${version}](${url}/compare/${tag}...${version})` : version} (${date})\n`;
 
   // tslint:disable-next-line: forin
   for (const group in config.groups) {
