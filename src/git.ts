@@ -23,7 +23,10 @@ export const getCommits = () =>
     .split(delim)
     .map(s => s.trim())
     .filter(Boolean)
-    .map(s => JSON.parse(s.replace(/\n/g, '\\n')) as unknown) as RawLog[];
+    .map(s => {
+      const str = s.replace(/\r/g, '').replace(/\n/g, '\\n');
+      return (JSON.parse(str) as unknown) as RawLog;
+    });
 
 export const writeGit = (version: string) => {
   ex('git add .');
