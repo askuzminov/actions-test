@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.18.0](https://github.com/askuzminov/actions-test/compare/v1.17.3...v1.18.0) (2020-9-16)
+
+### Features
+
+- **234**: 456 ([c0c37ae](https://github.com/askuzminov/actions-test/commit/c0c37aeae5ab098c9d686457869bb83c231d92f5))
+- 123 ([792bd0a](https://github.com/askuzminov/actions-test/commit/792bd0ab88ba709479e044e70d4aabd6767fa0be))
+
+### Bug Fixes
+
+- parser ([52d1f13](https://github.com/askuzminov/actions-test/commit/52d1f13cf990d1e3b16c91bf59aa0d68930c1f89))
+- 234 ([65cf40b](https://github.com/askuzminov/actions-test/commit/65cf40b46df50ba7a448460f876d4550dbdaeba5))
+- some new ([02303c3](https://github.com/askuzminov/actions-test/commit/02303c3ad0e2974ef1fd3bf9c3325b0c300e44ff))
+
+### others
+
+- Feature/test npm (#15) ([3f3b274](https://github.com/askuzminov/actions-test/commit/3f3b274fdd290498c03ab4797c5d99e700d41761))
+
+```
+* feat: 123
+
+* feat(234): 456
+
+* fix: some new
+```
+
+
 ## [v1.17.3](https://github.com/askuzminov/actions-test/compare/v1.17.2...v1.17.3) (2020-9-14)
 
 ### Bug Fixes
