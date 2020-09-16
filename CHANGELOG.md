@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.20.0](https://github.com/askuzminov/actions-test/compare/v1.19.0...v1.20.0) (2020-9-16)
+
+### Features
+
+- test npm (#18) ([88ae3e1](https://github.com/askuzminov/actions-test/commit/88ae3e15f95ebebd0f757a4263fed69cc2c5701b))
+
+```
+* fix: 234
+
+* fix: dfg
+
+* feat: dfg
+
+* fix: "some" changes  test {}
+
+* fix: escape
+```
+
+
 ## [v1.19.0](https://github.com/askuzminov/actions-test/compare/v1.18.0...v1.19.0) (2020-9-16)
 
 ### Features
