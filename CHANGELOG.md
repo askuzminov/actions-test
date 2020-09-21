@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.20.2](https://github.com/askuzminov/actions-test/compare/v1.20.1...v1.20.2) (2020-9-21)
+
+### Build system or external dependencies
+
+- deps ([20a38ed](https://github.com/askuzminov/actions-test/commit/20a38ed5fd3297a22e2216ac26291b500ed7c391))
+
+### Documentation
+
+- remove old ([e58903d](https://github.com/askuzminov/actions-test/commit/e58903d20df174ab193407fb16fb38e808e6cdc6))
+
+### Bug Fixes
+
+- async ([40e8154](https://github.com/askuzminov/actions-test/commit/40e815448aed8e3d9f9207833ffa4ecf3866c692))
+
+### Refactoring
+
+- add md ([174db8e](https://github.com/askuzminov/actions-test/commit/174db8e7ca9e592efe7ec3e70302cb8f63c1bde6))
+
+```md
+- example this
+- ready to [docs](https://docs.npmjs.com/)
+
+```
+
+
 ## [v1.20.1](https://github.com/askuzminov/actions-test/compare/v1.20.0...v1.20.1) (2020-9-21)
 
 ### Bug Fixes
