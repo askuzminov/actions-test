@@ -31,7 +31,6 @@ All notable changes to this project will be documented in this file. See [Conven
 * fix: escape
 ```
 
-
 ## [v1.19.0](https://github.com/askuzminov/actions-test/compare/v1.18.0...v1.19.0) (2020-9-16)
 
 ### Features
@@ -45,7 +44,6 @@ All notable changes to this project will be documented in this file. See [Conven
 
 * feat: dfg
 ```
-
 
 ## [v1.18.0](https://github.com/askuzminov/actions-test/compare/v1.17.3...v1.18.0) (2020-9-16)
 
@@ -72,7 +70,6 @@ All notable changes to this project will be documented in this file. See [Conven
 * fix: some new
 ```
 
-
 ## [v1.17.3](https://github.com/askuzminov/actions-test/compare/v1.17.2...v1.17.3) (2020-9-14)
 
 ### Bug Fixes
@@ -87,7 +84,6 @@ All notable changes to this project will be documented in this file. See [Conven
 fix: some
 ```
 
-
 ## [v1.17.2](https://github.com/askuzminov/actions-test/compare/v1.17.1...v1.17.2) (2020-9-14)
 
 ### Chore
@@ -97,7 +93,6 @@ fix: some
 ```
 fix: some
 ```
-
 
 ### Bug Fixes
 
@@ -112,7 +107,6 @@ fix: some
 ```
 fix: type
 ```
-
 
 ### Bug Fixes
 
@@ -136,7 +130,6 @@ fix: type
 Feature/test npm
 ```
 
-
 ## [v1.16.0](https://github.com/askuzminov/actions-test/compare/v1.15.1...v1.16.0) (2020-9-14)
 
 ### feat
@@ -151,7 +144,6 @@ Feature/test npm
 feat: 🚀 support
 ```
 
-
 ## [v1.15.1](https://github.com/askuzminov/actions-test/compare/v1.15.0...v1.15.1) (2020-9-14)
 
 ### fix
@@ -164,7 +156,6 @@ Example of this
 
 ```
 
-
 ### other
 
 - Merge pull request #9 from askuzminov/feature/test-npm ([558e508](https://github.com/askuzminov/actions-test/commit/558e508a4d14781a4b263b0e808233fcaea43086))
@@ -172,7 +163,6 @@ Example of this
 ```
 fix: long body
 ```
-
 
 ## [v1.15.0](https://github.com/askuzminov/actions-test/compare/v1.14.0...v1.15.0) (2020-9-14)
 
@@ -198,8 +188,7 @@ fix: long body
 
 - Merge pull request #8 from askuzminov/feature/test-npm ([16cce2f](https://github.com/askuzminov/actions-test/commit/16cce2f842abc594310331105ccdca4f570b1889))
 
-```Feature/test npm```
-
+`Feature/test npm`
 
 ## [v1.14.0](https://github.com/askuzminov/actions-test/compare/v1.13.5...v1.14.0) (2020-9-14)
 
