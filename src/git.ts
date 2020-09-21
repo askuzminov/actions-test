@@ -1,25 +1,27 @@
 import { RawLog } from './types';
-import { ex } from './utils';
+import { sp } from './utils';
 
 const DELIM = '###DELIM%!@^%$###';
 const ESCAPE = '###ESCAPE%!@^%$###';
 
-export const fetchAll = () => ex(`git fetch remote --tags`);
+export const fetchAll = () => sp('git', ['fetch', 'remote', '--tags']);
 
-export const getHash = () => ex('git rev-parse HEAD');
+export const getHash = () => sp('git', ['rev-parse', 'HEAD']);
 
-export const getTag = (): string => {
+export const getTag = (): Promise<string> => {
   try {
-    return ex(`git describe --tags --abbrev=0 --first-parent`);
+    return sp('git', ['describe', '--tags', '--abbrev=0', '--first-parent']);
   } catch {
-    return ex('git rev-list --max-parents=0 HEAD');
+    return sp('git', ['rev-list', '--max-parents=0', 'HEAD']);
   }
 };
 
 export const getCommitsRaw = (from: string, to: string) =>
-  ex(
-    `git log ${from}..${to} --pretty=format:'{ "short": ${ESCAPE}%h${ESCAPE}, "hash": ${ESCAPE}%H${ESCAPE}, "title": ${ESCAPE}%s${ESCAPE}, "body": ${ESCAPE}%b${ESCAPE} }${DELIM}'`
-  );
+  sp('git', [
+    'log',
+    `${from}..${to}`,
+    `--pretty=format:{ "short": ${ESCAPE}%h${ESCAPE}, "hash": ${ESCAPE}%H${ESCAPE}, "title": ${ESCAPE}%s${ESCAPE}, "body": ${ESCAPE}%b${ESCAPE} }${DELIM}`,
+  ]);
 
 const escaper = (str: string) => JSON.stringify(str);
 
@@ -40,16 +42,16 @@ const parse = (str: string) => {
   }
 };
 
-export const getCommits = () =>
-  getCommitsRaw(getTag(), getHash()).split(DELIM).map(esc).filter(Boolean).map(parse) as RawLog[];
+export const getCommits = async () =>
+  (await getCommitsRaw(await getTag(), await getHash())).split(DELIM).map(esc).filter(Boolean).map(parse) as RawLog[];
 
-export const writeGit = (version: string) => {
-  ex('git add .');
-  ex(`git commit -m "chore(release): ${version} [skip ci]"`);
-  ex(`git tag -a ${version} -m 'Release ${version}'`);
+export const writeGit = async (version: string) => {
+  await sp('git', ['add', '.']);
+  await sp('git', ['commit', '-m', `"chore(release): ${version} [skip ci]"`]);
+  await sp('git', ['tag', '-a', version, '-m', `Release ${version}`]);
 };
 
-export const pushGit = () => {
-  ex(`git push`);
-  ex(`git push --tags`);
+export const pushGit = async () => {
+  await sp('git', ['push']);
+  await sp('git', ['push', '--tags']);
 };

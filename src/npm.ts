@@ -1,20 +1,27 @@
+import { readFileSync } from 'fs';
+import { join } from 'path';
 import { ParseConfig } from './types';
-import { ex } from './utils';
+import { sp } from './utils';
 
-export function nextVersion(config: ParseConfig, preid?: string | boolean) {
-  return ex(
-    `npm version ${
-      preid
-        ? `prerelease${typeof preid === 'string' ? ` --preid=${preid}` : ''}`
-        : config.isMajor
-        ? 'major'
-        : config.isMinor
-        ? 'minor'
-        : 'patch'
-    } --no-git-tag-version`
-  );
+const npmCmd = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+
+export async function nextVersion(config: ParseConfig, preid?: string | boolean) {
+  const params = ['version', preid ? 'prerelease' : config.isMajor ? 'major' : config.isMinor ? 'minor' : 'patch'];
+
+  if (typeof preid === 'string') {
+    params.push(`--preid=${preid}`);
+  }
+
+  params.push('--no-git-tag-version');
+
+  await sp(npmCmd, params);
 }
 
-export function publish(registry: string, preid?: string | boolean) {
-  ex(`npm publish --tag ${preid ? 'canary' : 'latest'} --registry ${registry}`);
+export function getVersion(): string {
+  const file = readFileSync(join(process.cwd(), 'package.json'), 'utf8');
+  return `v${(JSON.parse(file) as Record<string, string>).version}`;
+}
+
+export async function publish(registry: string, preid?: string | boolean) {
+  await sp(npmCmd, ['publish', '--tag', preid ? 'canary' : 'latest', '--registry', registry]);
 }
