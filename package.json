@@ -48,7 +48,10 @@
     "tslint:fix": "npm run tslint -- --fix",
     "lint": "npm run tslint",
     "release": "node ./dist/cjs/index.js",
-    "dev": "ts-node -T src disable-git disable-github"
+    "dev": "ts-node -T src disable-git disable-github",
+    "version": "echo '234\n23\n424'",
+    "postversion": "echo 'POST\n23423\n\r\n424'",
+    "preversion": "echo 'PRE23423424\nsdfsdf'"
   },
   "devDependencies": {
     "@types/node": "14.10.1",

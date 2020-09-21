@@ -6,7 +6,7 @@ import { getChangelog, writeChangelog } from './changelog';
 import { TITLE } from './config';
 import { getCommits, getTag, pushGit, writeGit } from './git';
 import { makeMD } from './markdown';
-import { nextVersion, publish } from './npm';
+import { getVersion, nextVersion, publish } from './npm';
 import { getPack } from './package';
 import { parse } from './parser';
 import { githubRelese } from './release';
@@ -54,9 +54,9 @@ if (ARG.help) {
 }
 
 async function run() {
-  const tag = getTag();
+  const tag = await getTag();
   const date = getDate();
-  const commits = getCommits();
+  const commits = await getCommits();
   const pack = getPack();
   const repo = getRepo(pack);
   const url = getURL(repo);
@@ -66,7 +66,8 @@ async function run() {
   if (config.isEmpty) {
     console.log('No change found in GIT');
   } else {
-    const version = nextVersion(config, ARG.prerelease);
+    await nextVersion(config, ARG.prerelease);
+    const version = getVersion();
     const md = makeMD({ config, version, tag, date, url });
 
     console.log(version);
@@ -78,10 +79,10 @@ async function run() {
       }
 
       if (!ARG['disable-git']) {
-        writeGit(version);
+        await writeGit(version);
 
         if (!ARG['disable-push']) {
-          pushGit();
+          await pushGit();
         }
       }
 
@@ -106,11 +107,11 @@ async function run() {
     }
 
     if (ARG['publish-github']) {
-      publish('https://npm.pkg.github.com', ARG.prerelease);
+      await publish('https://npm.pkg.github.com', ARG.prerelease);
     }
 
     if (ARG['publish-npmjs']) {
-      publish('https://registry.npmjs.org', ARG.prerelease);
+      await publish('https://registry.npmjs.org', ARG.prerelease);
     }
   }
 }
