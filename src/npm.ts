@@ -1,5 +1,3 @@
-import { readFileSync } from 'fs';
-import { join } from 'path';
 import { ParseConfig } from './types';
 import { sp } from './utils';
 
@@ -15,11 +13,6 @@ export async function nextVersion(config: ParseConfig, preid?: string | boolean)
   params.push('--no-git-tag-version');
 
   await sp(npmCmd, params);
-}
-
-export function getVersion(): string {
-  const file = readFileSync(join(process.cwd(), 'package.json'), 'utf8');
-  return `v${(JSON.parse(file) as Record<string, string>).version}`;
 }
 
 export async function publish(registry: string, preid?: string | boolean) {
