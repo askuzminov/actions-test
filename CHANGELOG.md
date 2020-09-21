@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.20.1](https://github.com/askuzminov/actions-test/compare/v1.20.0...v1.20.1) (2020-9-21)
+
+### Bug Fixes
+
+- stream ([a456c54](https://github.com/askuzminov/actions-test/commit/a456c54ff2d1ba1dde21e06110ed81442bfc21dc))
+- {"df":123,"abc":{"cde":34}} ([dab309f](https://github.com/askuzminov/actions-test/commit/dab309f59f6deb92102f97c0a9ad514f520321da))
+
+### others
+
+- {"df":123,"abc":{"cde":34}} ([bce8626](https://github.com/askuzminov/actions-test/commit/bce8626e0e26b31a9952990c958c6d3a51dfcc85))
+
 ## [v1.20.0](https://github.com/askuzminov/actions-test/compare/v1.19.0...v1.20.0) (2020-9-16)
 
 ### Features
