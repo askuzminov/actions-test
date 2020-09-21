@@ -6,8 +6,8 @@ import { getChangelog, writeChangelog } from './changelog';
 import { TITLE } from './config';
 import { getCommits, getTag, pushGit, writeGit } from './git';
 import { makeMD } from './markdown';
-import { getVersion, nextVersion, publish } from './npm';
-import { getPack } from './package';
+import { nextVersion, publish } from './npm';
+import { getPack, getVersion } from './package';
 import { parse } from './parser';
 import { githubRelese } from './release';
 import { arg, getDate, getRepo, getURL } from './utils';
@@ -57,17 +57,17 @@ async function run() {
   const tag = await getTag();
   const date = getDate();
   const commits = await getCommits();
-  const pack = getPack();
+  const pack = await getPack();
   const repo = getRepo(pack);
   const url = getURL(repo);
   const config = parse(commits, url);
-  const changelog = getChangelog(TITLE);
+  const changelog = await getChangelog(TITLE);
 
   if (config.isEmpty) {
     console.log('No change found in GIT');
   } else {
     await nextVersion(config, ARG.prerelease);
-    const version = getVersion();
+    const version = await getVersion();
     const md = makeMD({ config, version, tag, date, url });
 
     console.log(version);
@@ -75,7 +75,7 @@ async function run() {
 
     if (!ARG.prerelease) {
       if (!ARG['disable-md']) {
-        writeChangelog(`${TITLE}${md}${changelog}`);
+        await writeChangelog(`${TITLE}${md}${changelog}`);
       }
 
       if (!ARG['disable-git']) {
@@ -90,7 +90,7 @@ async function run() {
         if (!GH_TOKEN) {
           console.warn('ENV `GH_TOKEN` not found');
         } else if (!repo) {
-          console.warn('No repository in package.json');
+          console.warn('No repository.url in package.json');
         } else {
           await githubRelese({
             token: GH_TOKEN,
