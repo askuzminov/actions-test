@@ -47,7 +47,7 @@ export const getCommits = async () =>
 
 export const writeGit = async (version: string) => {
   await sp('git', ['add', '.']);
-  await sp('git', ['commit', '-m', `"chore(release): ${version} [skip ci]"`]);
+  await sp('git', ['commit', '-m', `chore(release): ${version} [skip ci]`]);
   await sp('git', ['tag', '-a', version, '-m', `Release ${version}`]);
 };
 
