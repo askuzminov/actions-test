@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.20.3](https://github.com/askuzminov/actions-test/compare/v1.20.2...v1.20.3) (2020-9-22)
+
+### Bug Fixes
+
+- inherit ([aeaaec6](https://github.com/askuzminov/actions-test/commit/aeaaec60a8784a0643aaaa3ec4cc6bed612bc4ad))
+- git ([92993cc](https://github.com/askuzminov/actions-test/commit/92993ccd8d6f59bc5329512bd93fe7c2c713233c))
+- up ([902d12e](https://github.com/askuzminov/actions-test/commit/902d12e164551c22a0b7fc7aa606dfa33f0f5719))
+
 ## [v1.20.2](https://github.com/askuzminov/actions-test/compare/v1.20.1...v1.20.2) (2020-9-21)
 
 ### Build system or external dependencies
