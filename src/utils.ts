@@ -1,4 +1,4 @@
-import { spawn } from 'child_process';
+import { spawn, SpawnOptions } from 'child_process';
 import { Pack, Repo } from './types';
 
 const rRepo = /([^/.]+)[/.]+([^/.]+)[/.]+[^/.]+$/;
@@ -18,17 +18,17 @@ export function getDate() {
   return `${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}`;
 }
 
-export function sp(command: string, args?: string[]) {
+export function sp(command: string, args?: string[], options?: SpawnOptions) {
   return new Promise<string>((resolve, reject) => {
-    const stream = spawn(command, args);
+    const stream = spawn(command, args, options);
     let result = '';
     let error = '';
 
-    stream.stdout.on('data', (data: Buffer | string) => {
+    stream.stdout?.on('data', (data: Buffer | string) => {
       result += data.toString();
     });
 
-    stream.stderr.on('data', (data: Buffer | string) => {
+    stream.stderr?.on('data', (data: Buffer | string) => {
       error += data.toString();
     });
 

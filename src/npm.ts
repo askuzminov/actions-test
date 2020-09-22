@@ -12,7 +12,7 @@ export async function nextVersion(config: ParseConfig, preid?: string | boolean)
 
   params.push('--no-git-tag-version');
 
-  await sp(npmCmd, params);
+  await sp(npmCmd, params, { stdio: 'inherit' });
 }
 
 export async function publish(registry: string, preid?: string | boolean) {
