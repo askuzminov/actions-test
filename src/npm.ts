@@ -16,5 +16,5 @@ export async function nextVersion(config: ParseConfig, preid?: string | boolean)
 }
 
 export async function publish(registry: string, preid?: string | boolean) {
-  await sp(npmCmd, ['publish', '--tag', preid ? 'canary' : 'latest', '--registry', registry]);
+  await sp(npmCmd, ['publish', '--tag', preid ? 'canary' : 'latest', '--registry', registry], { stdio: 'inherit' });
 }
