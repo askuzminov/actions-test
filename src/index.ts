@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 
-// tslint:disable: no-console
-
 process.on('unhandledRejection', error => {
-  console.error(error);
+  log('error', 'Lint', error);
   process.exit(1);
 });
 
@@ -11,6 +9,7 @@ import { ARG } from './arg';
 import { getChangelog, writeChangelog } from './changelog';
 import { TITLE } from './config';
 import { getCommits, getTag, pushGit, writeGit } from './git';
+import { log } from './log';
 import { makeMD } from './markdown';
 import { nextVersion, publish } from './npm';
 import { getPack, getVersion } from './package';
@@ -31,14 +30,14 @@ async function run() {
   const changelog = await getChangelog(TITLE);
 
   if (config.isEmpty) {
-    console.log('No change found in GIT');
+    log('warn', 'Git', 'No change found in GIT');
   } else {
     await nextVersion(config, ARG.prerelease);
     const version = await getVersion();
     const md = makeMD({ config, version, tag, date, url });
 
-    console.log(version);
-    console.log(md);
+    log('info', 'Version', version);
+    log('info', 'Markdown', md);
 
     if (!ARG.prerelease) {
       if (!ARG['disable-md']) {
@@ -55,9 +54,9 @@ async function run() {
 
       if (!ARG['disable-github']) {
         if (!GH_TOKEN) {
-          console.warn('ENV `GH_TOKEN` not found');
+          log('warn', 'Github', 'ENV `GH_TOKEN` not found');
         } else if (!repo) {
-          console.warn('No repository.url in package.json');
+          log('warn', 'Package', 'No repository.url in package.json');
         } else {
           await githubRelese({
             token: GH_TOKEN,
@@ -68,7 +67,7 @@ async function run() {
               body: md,
               prerelease: false,
             },
-          }).catch(console.log);
+          }).catch(e => log('error', 'Github', e));
         }
       }
     }

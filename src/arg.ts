@@ -1,3 +1,4 @@
+import { log } from './log';
 import { arg } from './utils';
 
 export const ARG = arg<{
@@ -21,16 +22,15 @@ export const ARG = arg<{
 });
 
 if (ARG.help) {
-  // tslint:disable: no-console
-  console.log('Commands:');
-  console.log('help -> get command list');
-  console.log('prerelease -> only up version');
-  console.log('prerelease=SOME.NEW.VERSION -> only up version with custom ID');
-  console.log('disable-push -> prevent git push');
-  console.log('disable-git -> prevent git commit and tag');
-  console.log('disable-md -> prevent write CHANGELOG.md');
-  console.log('disable-github -> prevent github release');
-  console.log('publish-github -> publish in github registry');
-  console.log('publish-npmjs -> publish in npmjs registry');
+  log('info', 'Help', 'Commands:');
+  log('info', 'Help', 'help -> get command list');
+  log('info', 'Help', 'prerelease -> only up version');
+  log('info', 'Help', 'prerelease=SOME.NEW.VERSION -> only up version with custom ID');
+  log('info', 'Help', 'disable-push -> prevent git push');
+  log('info', 'Help', 'disable-git -> prevent git commit and tag');
+  log('info', 'Help', 'disable-md -> prevent write CHANGELOG.md');
+  log('info', 'Help', 'disable-github -> prevent github release');
+  log('info', 'Help', 'publish-github -> publish in github registry');
+  log('info', 'Help', 'publish-npmjs -> publish in npmjs registry');
   process.exit(0);
 }

@@ -1,3 +1,4 @@
+import { log } from './log';
 import { RawLog } from './types';
 import { sp } from './utils';
 
@@ -36,8 +37,7 @@ const parse = (str: string) => {
   try {
     return JSON.parse(str);
   } catch (e) {
-    // tslint:disable-next-line: no-console
-    console.log(str);
+    log('error', 'Parse commits', str);
     throw e;
   }
 };
