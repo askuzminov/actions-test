@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.20.4](https://github.com/askuzminov/actions-test/compare/v1.20.3...v1.20.4) (2020-9-22)
+
+### Bug Fixes
+
+- { stdio: 'inherit' } ([7685cbd](https://github.com/askuzminov/actions-test/commit/7685cbd2d2be0c07b0deb753e9bf49dc2eb48d8b))
+
 ## [v1.20.3](https://github.com/askuzminov/actions-test/compare/v1.20.2...v1.20.3) (2020-9-22)
 
 ### Bug Fixes
