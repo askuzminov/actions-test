@@ -3,8 +3,9 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { whitelist } from './config';
-import { log } from './log';
 import { rParse } from './parser';
+
+// tslint:disable: no-console
 
 const { GIT_PARAMS, HUSKY_GIT_PARAMS } = process.env;
 
@@ -15,25 +16,25 @@ const example =
   '<type>: <description> or <type>(scope): <description> or <type>!: <description> or <type>(scope)!: <description>';
 
 function error(): never {
-  log('error', 'Lint', `Schema of message: ${example}`);
-  log('error', 'Lint', 'Current message:');
-  log('error', 'Lint', commit);
+  console.error(`Schema of message: ${example}`);
+  console.error('Current message:');
+  console.error(commit);
   process.exit(1);
 }
 
 if (!parsed) {
-  log('error', 'Lint', 'Incorrect format of commit message');
+  console.error('Incorrect format of commit message');
   error();
 }
 
 const [, type] = parsed;
 
 if (!type) {
-  log('error', 'Lint', 'Type required in commit message');
+  console.error('Type required in commit message');
   error();
 }
 
 if (!whitelist[type]) {
-  log('error', 'Lint', `Type "${type}" should be one of: ${Object.keys(whitelist).join(', ')}`);
+  console.error(`Type "${type}" should be one of: ${Object.keys(whitelist).join(', ')}`);
   error();
 }
