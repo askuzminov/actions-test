@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.21.2](https://github.com/askuzminov/actions-test/compare/v1.21.1...v1.21.2) (2020-9-22)
+
+### Revert code
+
+- log lint ([89358a2](https://github.com/askuzminov/actions-test/commit/89358a2e018dda5656d8031ee3e171a1d1391b10))
+
 ## [v1.21.1](https://github.com/askuzminov/actions-test/compare/v1.21.0...v1.21.1) (2020-9-22)
 
 ### Bug Fixes
