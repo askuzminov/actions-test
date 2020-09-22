@@ -46,12 +46,12 @@ export const getCommits = async () =>
   (await getCommitsRaw(await getTag(), await getHash())).split(DELIM).map(esc).filter(Boolean).map(parse) as RawLog[];
 
 export const writeGit = async (version: string) => {
-  await sp('git', ['add', '.']);
-  await sp('git', ['commit', '-m', `chore(release): ${version} [skip ci]`]);
-  await sp('git', ['tag', '-a', version, '-m', `Release ${version}`]);
+  await sp('git', ['add', '.'], { stdio: 'inherit' });
+  await sp('git', ['commit', '-m', `chore(release): ${version} [skip ci]`], { stdio: 'inherit' });
+  await sp('git', ['tag', '-a', version, '-m', `Release ${version}`], { stdio: 'inherit' });
 };
 
 export const pushGit = async () => {
-  await sp('git', ['push']);
-  await sp('git', ['push', '--tags']);
+  await sp('git', ['push'], { stdio: 'inherit' });
+  await sp('git', ['push', '--tags'], { stdio: 'inherit' });
 };
