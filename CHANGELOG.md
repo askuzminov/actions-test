@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.21.3](https://github.com/askuzminov/actions-test/compare/v1.21.2...v1.21.3) (2020-9-24)
+
+### others
+
+- Merge pull request test ([a55872e](https://github.com/askuzminov/actions-test/commit/a55872ebf81d4749f38c72551d39af9e0890f6f0))
+
 ## [v1.21.2](https://github.com/askuzminov/actions-test/compare/v1.21.1...v1.21.2) (2020-9-22)
 
 ### Revert code
