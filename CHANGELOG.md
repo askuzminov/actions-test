@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.21.4](https://github.com/askuzminov/actions-test/compare/v1.21.3...v1.21.4) (2020-9-24)
+
+### Continuous Integration
+
+- log release ([5136486](https://github.com/askuzminov/actions-test/commit/5136486eb38d1854dfea4b4c580d47c8b006d1cc))
+
 ## [v1.21.3](https://github.com/askuzminov/actions-test/compare/v1.21.2...v1.21.3) (2020-9-24)
 
 ### others
