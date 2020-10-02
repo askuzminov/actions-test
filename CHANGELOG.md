@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.
 
+## [v1.21.5](https://github.com/askuzminov/actions-test/compare/v1.21.4...v1.21.5) (2020-10-2)
+
+### Tests
+
+- new update ([c92305e](https://github.com/askuzminov/actions-test/commit/c92305e231537cc7d16022ce1b381dac1e42a1c7))
+
+  > # Simple release
+  > 
+  > Full auto pipeline for simple releases your packages.
+  > 
+  > - Collect git history for auto release
+  > - Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines
+  > - Generate CHANGELOG.md
+  > - Update package.json, package-lock.json
+  > - Parse body commits as Markdown, support utf-8 and emoji 🚀
+  > - Commit, tag and push new version
+  > - **Upload** release on Github
+  > - *Upload* package on Github
+  > - Upload package on Npmjs.org
+  > - Zero dependencies
+  > 
+  > ## Install
+  > 
+  > ```bash
+  > npm i @askuzminov/simple-release
+  > ```
+
+
 ## [v1.21.4](https://github.com/askuzminov/actions-test/compare/v1.21.3...v1.21.4) (2020-9-24)
 
 ### Continuous Integration
