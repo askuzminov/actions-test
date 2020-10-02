@@ -1,5 +1,7 @@
 export const TITLE = `# Changelog\n\nAll notable changes to this project will be documented in this file. See [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) for commit guidelines.\n`;
 
+export const CHANGELOG_FILE = 'CHANGELOG.md';
+
 export const whitelist: Record<string, string> = {
   break: 'Breaking changes',
   feat: 'Features',
@@ -16,3 +18,9 @@ export const whitelist: Record<string, string> = {
 };
 
 export const rIgnore = /^((Merge pull request)|(Merge remote-tracking branch)|(Automatic merge)|((Auto-merged|Merged) (.*?) (in|into) )|(Merge branch)|(R|r)evert|fixup|squash)/;
+
+export const rRepo = /([^/.]+)[/.]+([^/.]+)(?:\.[^/.]+)?$/;
+
+export const rParse = /^(\w*)(?:\(([\w$.\-*/ ]*)\))?(!)?: (.*)$/m;
+
+export const rBreak = /BREAKING CHANGES?:/i;
